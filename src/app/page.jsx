@@ -36,13 +36,13 @@ export default function Page () {
     };
 }, []);
 
-  const bg_sound = new Howl({
-    src: ['/bg_music.mp3'], // Add the path to your sound file
-    volume: 0.2, // Adjust the volume (0 to 1)
-    loop: true, // Whether the sound should loop
-    preload: true, // Preload the sound,
-    html5: true
-  });
+  // const bg_sound = new Howl({
+  //   src: ['/bg_music.mp3'], // Add the path to your sound file
+  //   volume: 0.2, // Adjust the volume (0 to 1)
+  //   loop: true, // Whether the sound should loop
+  //   preload: true, // Preload the sound,
+  //   html5: true
+  // });
   
 
   const triggerNextStage = () => {
@@ -58,19 +58,17 @@ export default function Page () {
     countRef.current = energyScore; 
   }, [energyScore]);
 
-  const increase_sound_energy = new Howl({
-    src: ['/correct.mp3'], // Add the path to your sound file
-    volume: 0.8, // Adjust the volume (0 to 1)
-    preload: true, // Preload the sound
-    html5: true
-  });
+  // const increase_sound_energy = new Howl({
+  //   src: ['/correct.mp3'], // Add the path to your sound file
+  //   volume: 0.8, // Adjust the volume (0 to 1)
+  //   preload: true, // Preload the sound
+  // });
 
-  const decrease_sound_energy = new Howl({
-    src: ['/incorrect.mp3'], // Add the path to your sound file
-    volume: 0.7, // Adjust the volume (0 to 1)
-    preload: true, // Preload the sound
-    html5: true
-  });
+  // const decrease_sound_energy = new Howl({
+  //   src: ['/incorrect.mp3'], // Add the path to your sound file
+  //   volume: 0.7, // Adjust the volume (0 to 1)
+  //   preload: true, // Preload the sound
+  // });
 
   const changeEnergyScore = (change, delay = 0) => {
     // Start the GSAP animation
@@ -88,9 +86,9 @@ export default function Page () {
 
     setTimeout(() => {
       if (change < 0) {
-        decrease_sound_energy.play();
+        //decrease_sound_energy.play();
       } else {
-        increase_sound_energy.play();
+        //increase_sound_energy.play();
       }
       
     }, Math.max((delay * 1000)/2, 0));
@@ -157,7 +155,7 @@ export default function Page () {
         
       )}
       
-      {stageNumber == 0 && (<Opening playBgSound={ () => { bg_sound.play() } } nextStageTrigger={triggerNextStage} />)}
+      {stageNumber == 0 && (<Opening playBgSound={ () => { /*bg_sound.play()*/ } } nextStageTrigger={triggerNextStage} />)}
       {stageNumber == 1 && (<Scene1 nextStageTrigger={triggerNextStage} changeBarText={changeBarText} changeEnergyScore={changeEnergyScore} />)}
       {stageNumber == 2 && (<Scene2 nextStageTrigger={triggerNextStage} changeBarText={changeBarText} changeEnergyScore={changeEnergyScore} />)}
     </div>
@@ -234,11 +232,11 @@ export function Opening ({ playBgSound, nextStageTrigger }) {
     });
   });
 
-  const button_click = new Howl({
-    src: ['/button2.mp3'], // Add the path to your sound file
-    volume: 1, // Adjust the volume (0 to 1)
-    preload: true, // Preload the sound
-  });
+  // const button_click = new Howl({
+  //   src: ['/button2.mp3'], // Add the path to your sound file
+  //   volume: 1, // Adjust the volume (0 to 1)
+  //   preload: true, // Preload the sound
+  // });
 
   
 
@@ -247,7 +245,7 @@ export function Opening ({ playBgSound, nextStageTrigger }) {
 
       
 
-      button_click.play();
+      // button_click.play();
 
       playBgSound();
 

@@ -2,7 +2,6 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useEffect } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { playAudio } from "../page";
 
 export default function Scene1 ({ nextStageTrigger, changeBarText, changeEnergyScore }) {
 
@@ -108,17 +107,17 @@ export default function Scene1 ({ nextStageTrigger, changeBarText, changeEnergyS
     )
   }
 
-  function Button ({ onClick }) {
+  export function Button ({ onClick, text = "Next" }) {
 
-    const button_click = new Howl({
-        src: ['/button2.mp3'], // Add the path to your sound file
-        volume: 2, // Adjust the volume (0 to 1)
-        preload: true, // Preload the sound
-    });    
+    // const button_click = new Howl({
+    //     src: ['/button2.mp3'], // Add the path to your sound file
+    //     volume: 2, // Adjust the volume (0 to 1)
+    //     preload: true, // Preload the sound
+    // });    
 
 
     const action = () => {
-        button_click.play();
+        //button_click.play();
         onClick();
     }
 
@@ -126,7 +125,7 @@ export default function Scene1 ({ nextStageTrigger, changeBarText, changeEnergyS
         <div onClick={action} className="group cursor-pointer z-20 h-[140px] w-fit mx-auto flex items-center justify-center">
             <div className="absolute z-10 flex flex-row items-center gap-x-4 text-xl">
                 <div className="flex flex-row items-center gap-x-2">
-                    <p>Next</p>
+                    <p>{text}</p>
                     <FaArrowRightLong />
                 </div>
             </div>
